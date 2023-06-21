@@ -26,7 +26,7 @@ export class UserNameState {
     const state = getState()
     patchState({
       ...state,
-      userName: payload.userName
+      userName: `Hello ${payload.userName}!!! 👋`
     })
   }
 }
