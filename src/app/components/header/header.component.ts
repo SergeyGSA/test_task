@@ -15,15 +15,15 @@ export class HeaderComponent implements OnInit {
   public navItems: INavItem[] = [
     {
       name:'Home',
-      route: ''
+      route: 'home'
     }, 
     {
       name:'My CV',
-      route: ''
+      route: 'my-cv'
     }, 
     {
       name:'About me',
-      route: ''
+      route: 'about-me'
     }
   ]
 
