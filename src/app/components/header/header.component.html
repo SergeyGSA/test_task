@@ -1,0 +1,15 @@
+<header class="header">
+  <nav>
+      <mat-toolbar color="primary">
+        <button mat-icon-button class="example-icon" aria-label="menu toggle button" [matMenuTriggerFor]="menu">
+          <mat-icon>menu</mat-icon>
+        </button>
+        <h1 class="header__heading">My App</h1>
+      </mat-toolbar>
+      <mat-menu #menu="matMenu">
+        <ng-container *ngFor="let navItem of navItems">
+          <a class="header__menu-item" mat-menu-item [routerLink]="navItem.route">{{ navItem.name }}</a>
+        </ng-container>
+      </mat-menu>
+  </nav>
+</header>
