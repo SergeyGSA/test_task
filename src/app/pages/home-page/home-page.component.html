@@ -1,16 +1,16 @@
 <main class="home">
-  <h2 class="home__heading">Hello guys</h2>
+  <h2 class="home__heading">Hello {{ userName$ | async }}!!!</h2>
   <form class="home__form" [formGroup]="helloForm" (ngSubmit)="onSubmit()">
     <mat-form-field>
       <mat-label>Your name</mat-label>
       <input matInput 
         placeholder="Type your name"
         required
-        formControlName="name"
+        formControlName="userName"
       />
       <mat-error>
-        <span class="home__form-error" *ngIf="helloForm.controls.name.hasError('required')">The name field is required</span>
-        <span class="home__form-error" *ngIf="helloForm.controls.name.hasError('maxlength')">The name max length can't be more than 30</span>
+        <span class="home__form-error" *ngIf="helloForm.controls.userName.hasError('required')">The name field is required</span>
+        <span class="home__form-error" *ngIf="helloForm.controls.userName.hasError('maxlength')">The name max length can't be more than 30</span>
       </mat-error>
     </mat-form-field>
     <button mat-raised-button color="primary" type="submit">Save</button>

@@ -1,12 +1,16 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Select, Store } from '@ngxs/store';
+import { Observable } from 'rxjs';
+import { AddUserName } from 'src/app/store/userName.action';
+import { UserNameState } from 'src/app/store/userName.state';
 
 interface IHelloForm {
-  name: FormControl<string>
+  userName: FormControl<string>
 }
 
 interface IHelloFormData {
-  name: string | undefined
+  userName: string
 }
 
 @Component({
@@ -18,9 +22,12 @@ interface IHelloFormData {
 export class HomePageComponent implements OnInit {
   public helloForm: FormGroup<IHelloForm>
 
-  constructor() { 
+  @Select(UserNameState.getUserName) 
+  public userName$!: Observable<string>
+
+  constructor(private store: Store) { 
     this.helloForm = new FormGroup({
-      name: new FormControl('', {
+      userName: new FormControl('', {
         nonNullable: true,
         validators: [Validators.required, Validators.maxLength(30)],
       })
@@ -32,11 +39,11 @@ export class HomePageComponent implements OnInit {
 
   public onSubmit(): void {
     const helloData: IHelloFormData = {
-      name: this.helloForm.value.name?.trim()
+      userName: this.helloForm.value.userName?.trim()!
     } 
 
     if (this.helloForm.valid) {
-      console.log(helloData)
+      this.store.dispatch(new AddUserName(helloData))
     }
   }
 }

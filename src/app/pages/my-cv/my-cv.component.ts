@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Select } from '@ngxs/store';
+import { Observable } from 'rxjs';
+import { UserNameState } from 'src/app/store/userName.state';
 
 @Component({
   selector: 'app-my-cv',
@@ -6,6 +9,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./my-cv.component.scss']
 })
 export class MyCvComponent implements OnInit {
+  @Select(UserNameState.getUserName) 
+  public userName$!: Observable<string>
 
   constructor() { }
 

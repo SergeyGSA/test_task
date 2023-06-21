@@ -6,6 +6,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HeaderModule } from './components/header/header.module';
+import { NgxsModule } from '@ngxs/store';
+import { environment } from 'src/environments/environment';
+import { UserNameState } from './store/userName.state';
 
 @NgModule({
   declarations: [
@@ -17,6 +20,9 @@ import { HeaderModule } from './components/header/header.module';
     AppRoutingModule,
     BrowserAnimationsModule,
     HeaderModule,
+    NgxsModule.forRoot([UserNameState], {
+      developmentMode: !environment.production
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
