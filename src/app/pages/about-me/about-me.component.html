@@ -1,3 +1,24 @@
 <main class="about">
-  <h2 class="about__heading">{{ userName$ | async | uppercase }}</h2>
+  <div class="about__top">
+    <h2 class="about__heading">{{ userName$ | async | uppercase }}</h2>
+    <mat-slide-toggle (toggleChange)="changeStyle()">Slide me!</mat-slide-toggle>
+  </div>
+
+  <section class="about__wrapper" [ngClass]="{'custom': isCustom$ | async}">
+    <h3>About me</h3>
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+      Non ipsa molestias sequi dignissimos neque. 
+      Qui, amet. Illum ea voluptas perferendis quidem accusantium 
+      laborum dolor, aliquid neque aspernatur? Doloribus, explicabo 
+      veritatis.
+    </p>
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+      Non ipsa molestias sequi dignissimos neque. 
+      Qui, amet. Illum ea voluptas perferendis quidem accusantium 
+      laborum dolor, aliquid neque aspernatur? Doloribus, explicabo 
+      veritatis.
+    </p>
+  </section>
 </main>
