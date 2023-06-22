@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { NgxsModule } from '@ngxs/store';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 import { AboutMeComponent } from './about-me.component';
 
@@ -10,7 +11,8 @@ describe('AboutMeComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ AboutMeComponent ],
-      imports: [ NgxsModule.forRoot([]) ]
+      imports: [ NgxsModule.forRoot([]) ],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA]
     })
     .compileComponents();
 

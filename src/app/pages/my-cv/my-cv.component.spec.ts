@@ -2,6 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { NgxsModule } from '@ngxs/store';
 
 import { MyCvComponent } from './my-cv.component';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 describe('MyCvComponent', () => {
   let component: MyCvComponent;
@@ -10,7 +11,8 @@ describe('MyCvComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ MyCvComponent ],
-      imports: [ NgxsModule.forRoot([]) ]
+      imports: [ NgxsModule.forRoot([]) ],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA]
     })
     .compileComponents();
 
