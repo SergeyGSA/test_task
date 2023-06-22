@@ -1,5 +1,5 @@
 <main class="home">
-  <h2 class="home__heading">{{ userName$ | async }}</h2>
+  <h2 class="home__heading">{{ userName$ | async | uppercase }}</h2>
   <form class="home__form" [formGroup]="helloForm" (ngSubmit)="onSubmit()">
     <mat-form-field>
       <mat-label>Your name</mat-label>

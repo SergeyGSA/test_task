@@ -1,3 +1,68 @@
-<main class="mycv">
-  <h2 class="mycv__heading">{{ userName$ | async }}</h2>
+<main class="mycv-page">
+  <h2 class="mycv-page__heading">{{ userName$ | async | uppercase }}</h2>
+
+<section class="mycv">
+  <h2 class="mycv__heading">my cv</h2>
+  <div class="mycv__wrapper">
+    <div class="mycv__buttons">
+      <button mat-raised-button color="primary" (click)="accordion.openAll()">Expand All</button>
+      <button mat-raised-button color="accent" (click)="accordion.closeAll()">Collapse All</button>
+    </div>
+    <mat-accordion multi>
+      <ng-container *ngFor="let cvItem of cvData">
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <strong>{{ cvItem.title }}</strong>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <a 
+          *ngIf="cvItem.extended && cvItem.extended.startsWith('https'); else elseBlock" 
+          href="cvItem.extended"
+          >
+          {{ cvItem.extended }}
+        </a>
+        <ng-template #elseBlock>
+          <span>{{ cvItem.extended }}</span>
+        </ng-template>
+
+
+          <ul *ngIf="cvItem.contacts" class="list-contacts">
+            <li *ngFor="let contact of cvItem.contacts">
+              <div>
+                <strong>{{ contact.contactType }}:</strong>
+              </div>
+                <span>{{ contact.contactValue }}</span>
+            </li>
+          </ul>
+
+          <ul *ngIf="cvItem.skills" class="list-skills">
+            <li *ngFor="let skill of cvItem.skills">
+              <img [src]="skill.icon" [alt]="skill.skillName" />
+                <strong>{{ skill.skillName }}</strong>
+            </li>
+          </ul>
+
+          <ul *ngIf="cvItem.experience" class="list-experience">
+            <li *ngFor="let experienceItem of cvItem.experience">
+              <div>
+                <strong>{{ experienceItem.company }}</strong>
+              </div>
+              <span>{{ experienceItem.details }}</span>
+            </li>
+          </ul>
+
+          <ul *ngIf="cvItem.languages" class="list-experience">
+            <li *ngFor="let language of cvItem.languages">
+              <div>
+                <strong>{{ language.language }}</strong>
+              </div>
+              <span>{{ language.level }}</span>
+            </li>
+          </ul>
+        </mat-expansion-panel>
+      </ng-container>
+    </mat-accordion>
+  </div>
+</section>
 </main>
