@@ -1,11 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Select } from '@ngxs/store';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { UserNameState } from 'src/app/store/userName.state';
 @Component({
   selector: 'app-about-me',
   templateUrl: './about-me.component.html',
-  styleUrls: ['./about-me.component.scss']
+  styleUrls: ['./about-me.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AboutMeComponent implements OnInit {
   public isCustom$ = new BehaviorSubject<boolean>(false)

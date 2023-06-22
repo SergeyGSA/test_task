@@ -9,8 +9,18 @@
         formControlName="userName"
       />
       <mat-error>
-        <span class="home__form-error" *ngIf="helloForm.controls.userName.hasError('required')">The name field is required</span>
-        <span class="home__form-error" *ngIf="helloForm.controls.userName.hasError('maxlength')">The name max length can't be more than 30</span>
+        <span 
+          class="home__form-error" 
+          *ngIf="helloForm.controls.userName.hasError('required')"
+        >
+          The name field is required
+        </span>
+        <span 
+          class="home__form-error" 
+          *ngIf="helloForm.controls.userName.hasError('maxlength')"
+        >
+        The name max length can't be more than 30
+      </span>
       </mat-error>
     </mat-form-field>
     <button mat-raised-button color="primary" type="submit">Save</button>
