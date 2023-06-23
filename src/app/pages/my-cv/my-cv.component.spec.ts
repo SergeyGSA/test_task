@@ -1,8 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { NgxsModule } from '@ngxs/store';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 import { MyCvComponent } from './my-cv.component';
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 describe('MyCvComponent', () => {
   let component: MyCvComponent;
