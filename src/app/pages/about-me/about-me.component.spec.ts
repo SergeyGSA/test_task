@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { NgxsModule } from '@ngxs/store';
+import { NgxsModule, Select } from '@ngxs/store';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 import { AboutMeComponent } from './about-me.component';
@@ -23,5 +23,17 @@ describe('AboutMeComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should initialize isCustom$ with false', () => {
+    expect(component.isCustom$.value).toBe(false);
+  });
+
+  it('should change isCustom$ value on changeStyle()', () => {
+    component.changeStyle();
+    expect(component.isCustom$.getValue()).toBeTrue();
+
+    component.changeStyle();
+    expect(component.isCustom$.getValue()).toBeFalse();
   });
 });
