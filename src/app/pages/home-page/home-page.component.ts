@@ -10,7 +10,7 @@ interface IHelloForm {
 }
 
 interface IHelloFormData {
-  userName: string
+  userName: string | undefined
 }
 
 @Component({
@@ -39,7 +39,7 @@ export class HomePageComponent implements OnInit {
 
   public onSubmit(): void {
     const helloData: IHelloFormData = {
-      userName: this.helloForm.value.userName?.trim()!
+      userName: this.helloForm.value.userName?.trim()
     } 
 
     if (this.helloForm.valid) {
